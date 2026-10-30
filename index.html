@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf8f2">
+  <title>PickPerfect — Know When It's Perfect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,600,0,1;0,9..144,700,0,1;1,9..144,600,0,1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="announcement"><span class="announcement-pill">LIVE MODEL</span><span>Powered by your Teachable Machine image classifier</span><a href="#scanner">Try the fruit scanner <span aria-hidden="true">→</span></a></div>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="PickPerfect home"><span class="brand-mark">✳</span><span><strong>Pick<span>Perfect</span></strong><small>Know When It's Perfect. PickPerfect.</small></span></a>
+    <nav class="desktop-nav" aria-label="Main navigation"><a class="active" href="#home">Home</a><a href="#scanner">Fruit Scanner</a><a href="#history">Scan History</a><a href="#how-it-works">How AI Works</a></nav>
+    <a class="nav-cta" href="#scanner"> <span>◎</span> Start Scanning</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-dot">✦</span> Computer Vision Ripeness Intelligence</div>
+          <h1>Know When It’s Perfect.<br><em>PickPerfect.</em></h1>
+          <p class="hero-description">Ever sliced an avocado too early, or let prized bananas turn to mush on the counter? <strong>PickPerfect</strong> uses artificial intelligence to inspect your fruit's surface, skin pigmentation, and texture markers, telling you whether it's <strong>Unripe</strong>, <strong>Ripe</strong>, or <strong>Overripe</strong>.</p>
+          <div class="hero-actions"><a class="button button-primary" href="#scanner"><span>◎</span> Start Scanning Fruit</a><a class="button button-secondary" href="#how-it-works"><span>⌘</span> How the AI Works</a></div>
+          <div class="hero-benefits"><span><b>✓</b> Camera &amp; Upload Ready</span><span><b>✓</b> 3 Strict Classifier Classes</span><span><b>✓</b> Confidence Safeguards</span></div>
+        </div>
+        <aside class="preview-card" aria-label="Fruit scanner preview">
+          <span class="preview-tag">LIVE PREVIEW MODE</span>
+          <div class="fruit-art" id="heroFruitArt"><div class="fruit-visual" aria-hidden="true">🍌</div><div class="scan-frame"><span>AI Vision Target</span><span class="scan-sample">Fruit ripeness detection</span></div></div>
+          <div class="preview-result"><div><small>MODEL STATUS</small><h3 id="modelStatus">Ready to load</h3></div><span class="status-chip" id="heroStatus">CONNECTING</span></div>
+          <div class="preview-note">Your real model predictions appear in the scanner below.</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="problem-section" id="how-it-works">
+      <div class="section-heading"><span class="section-kicker">THE PROBLEM &amp; THE SOLUTION</span><h2>Why Fruit Ripeness Matters to Every<br class="desktop-break"> Household</h2><p>Picking fruit at the grocery store or timing consumption at home shouldn't be guesswork.</p></div>
+      <div class="two-cards">
+        <article class="info-card problem-card"><div class="card-icon">⌕</div><h3>The Common Dilemma</h3><p>Consumers struggle to discern inner ripeness strictly from outer appearance. Thick skins, deceptive wax coatings, and subtle color shifts lead to two disappointing extremes:</p><ul><li><b>Cutting fruit too early:</b> firm, flavorless fruit that isn't ready to enjoy.</li><li><b>Waiting too long:</b> fruit passes its ideal eating window.</li><li><b>Grocery store uncertainty:</b> choosing without knowing what to expect.</li></ul></article>
+        <article class="info-card solution-card"><div class="card-icon">✳</div><h3>The PickPerfect Solution</h3><p>PickPerfect pairs everyday smartphone or laptop cameras with computer vision machine learning. In seconds, the model evaluates the image and returns a class prediction:</p><ul><li><b>Objective classification:</b> one of the model's three labels.</li><li><b>Confidence transparency:</b> see the score for every class.</li><li><b>Actionable guidance:</b> practical next steps for your fruit.</li></ul></article>
+      </div>
+    </section>
+
+    <section class="classes-section" id="classes">
+      <div class="section-heading"><span class="section-kicker">MODEL STANDARD</span><h2>Our Three Ripeness Categories</h2><p>PickPerfect uses the three labels configured in your Teachable Machine model.</p></div>
+      <div class="class-grid">
+        <article class="class-card unripe"><span class="class-label">CLASS 01</span><span class="class-emoji">🌱</span><h3>Unripe</h3><p>Fruit that has not yet reached its ideal eating stage. It may be firm and still developing its characteristic flavor.</p><div class="class-guidance">↗ <b>Guidance:</b> Give it more time to ripen.</div></article>
+        <article class="class-card ripe"><span class="class-label">CLASS 02</span><span class="class-emoji">🍐</span><h3>Ripe</h3><p>Fruit at or near its ideal eating stage, with the expected color, softness, and flavor for that fruit.</p><div class="class-guidance">↗ <b>Guidance:</b> Enjoy it while it's ready.</div></article>
+        <article class="class-card overripe"><span class="class-label">CLASS 03</span><span class="class-emoji">🍂</span><h3>Overripe</h3><p>Fruit that may be past its preferred texture or eating window. Check it before deciding whether to use or discard it.</p><div class="class-guidance">↗ <b>Guidance:</b> Check quality; compost if no longer usable.</div></article>
+      </div>
+    </section>
+
+    <section class="scanner-section" id="scanner">
+      <div class="section-heading scanner-heading"><span class="section-kicker">INTERACTIVE MODULE</span><h2>Fruit Scanning Console</h2><p>Capture a live camera feed or upload a fruit photo to get a prediction from the connected model.</p></div>
+      <div class="scanner-layout">
+        <section class="panel input-panel">
+          <div class="panel-top"><div><span class="panel-label">IMAGE INPUT</span><h3>Scan your fruit</h3></div><span class="model-pill" id="modelPill">MODEL LOADING</span></div>
+          <div class="input-tabs"><button class="tab active" data-mode="upload" type="button">▧ Image Upload</button><button class="tab" data-mode="camera" type="button">◉ Live Camera</button></div>
+          <div class="upload-area" id="uploadArea"><div class="upload-icon">↑</div><h4>Drop a fruit image here</h4><p>or browse a photo from your device</p><label class="button button-primary upload-button" for="imageInput">Choose Image</label><input id="imageInput" type="file" accept="image/*" hidden><small>Use a clear, well-lit photo with one fruit in view.</small></div>
+          <div class="camera-area hidden" id="cameraArea"><video id="cameraVideo" autoplay muted playsinline></video><div class="camera-placeholder" id="cameraPlaceholder">Camera preview will appear here</div><div class="camera-controls"><button class="button button-primary" id="startCamera" type="button">Start Camera</button><button class="button button-secondary" id="stopCamera" type="button" disabled>Stop Camera</button></div><small>Camera access requires HTTPS or localhost and your permission.</small></div>
+          <div class="image-preview hidden" id="imagePreviewWrap"><img id="imagePreview" alt="Selected fruit preview"><button type="button" id="clearImage" class="text-button">Remove image</button></div>
+          <div class="input-status" id="inputStatus" role="status">Loading your Teachable Machine model…</div>
+        </section>
+
+        <section class="panel result-panel" aria-live="polite">
+          <div class="panel-top"><div><span class="panel-label">MODEL OUTPUT</span><h3>Prediction results</h3></div><span class="result-dot"></span></div>
+          <div class="result-summary"><div><small>PRIMARY DETECTED CLASS</small><h2 id="primaryClass">Waiting for scan</h2><p id="resultMessage">Choose an image or start the camera to begin.</p></div><span class="confidence-badge" id="topConfidence">—</span></div>
+          <div class="confidence-list">
+            <div class="confidence-row"><div><span>Unripe</span><b id="unripeValue">—</b></div><div class="bar"><span id="unripeBar"></span></div></div>
+            <div class="confidence-row"><div><span>Ripe</span><b id="ripeValue">—</b></div><div class="bar"><span id="ripeBar"></span></div></div>
+            <div class="confidence-row"><div><span>Overripe</span><b id="overripeValue">—</b></div><div class="bar"><span id="overripeBar"></span></div></div>
+          </div>
+          <div class="uncertain-message hidden" id="uncertainMessage"><b>Uncertain result (below 80%)</b><span>The model's top confidence is below 80%. Try a clearer photo with better lighting and the fruit centered.</span></div>
+          <div class="advice-box"><b>General fruit advice</b><p id="generalAdvice">A prediction will provide practical guidance here. Always check the fruit's smell, texture, and visible condition yourself.</p></div>
+          <div class="save-actions"><button class="button button-primary" id="saveScan" type="button" disabled>＋ Save This Scan</button><button class="button button-secondary" id="nextItem" type="button">Next Item</button></div>
+        </section>
+      </div>
+
+      <section class="panel disposal-panel">
+        <div class="disposal-copy"><span class="panel-label">DISPOSAL CHECK</span><h3>Which bin are you using?</h3><p>Choose an option to compare it with the project's clearly labeled demo guidance. Fruit scraps generally belong in organics/compost where accepted, not mixed recycling. Local waste rules vary.</p></div>
+        <div class="disposal-controls"><label for="binSelect">Your selected bin</label><select id="binSelect"><option value="">Choose a bin…</option><option value="keep">Keep / Eat Later</option><option value="compost">Compost / Organics</option><option value="trash">General Trash</option><option value="recycling">Mixed Recycling</option></select><div id="binFeedback" class="bin-feedback" role="status">Run a scan and choose a bin to see demo feedback.</div><small>DEMO BIN RULES — illustrative project logic, not official PCTVS or municipal recycling guidance.</small></div>
+      </section>
+    </section>
+
+    <section class="history-section" id="history">
+      <div class="history-heading"><div><span class="section-kicker">PROGRESSION TRACKER</span><h2>Scan History &amp; Session Logging</h2><p>Saved scans stay in this browser on this device.</p></div><div class="history-actions"><div class="count-box">TOTAL LOGGED <b id="totalCount">0</b></div><button class="button button-secondary button-small" id="undoScan" type="button" disabled>↶ Undo</button></div></div>
+      <div class="history-stats"><div><span>Unripe</span><b id="countUnripe">0</b></div><div><span>Ripe</span><b id="countRipe">0</b></div><div><span>Overripe</span><b id="countOverripe">0</b></div></div>
+      <div class="history-list" id="historyList"><div class="empty-history"><span>◷</span><b>No scans saved yet</b><p>Your saved fruit scans will appear here. Camera frames are never logged automatically.</p></div></div>
+    </section>
+
+    <section class="bottom-cta"><h2>Have fruit sitting on your kitchen counter?</h2><p>Take a snap or choose a photo from your Chromebook or phone. The detector delivers a prediction and practical advice.</p><a class="button button-accent" href="#scanner">◎ Launch Fruit Scanner</a></section>
+  </main>
+
+  <footer class="site-footer"><div class="footer-grid"><div class="footer-brand"><a class="brand brand-light" href="#home"><span class="brand-mark">✳</span><span><strong>Pick<span>Perfect</span></strong></span></a><p>“Know When It's Perfect. PickPerfect.” An AI smart fruit ripeness detector designed for everyday decisions.</p><small>Location: PCTVS · Display name: Rsangupillai</small></div><div><h4>NAVIGATION</h4><a href="#home">Home Page</a><a href="#scanner">Fruit Scanner</a><a href="#history">Scan History</a><a href="#how-it-works">How AI Works</a></div><div><h4>SUPPORTED CLASSES</h4><a href="#classes">● Unripe</a><a href="#classes">● Ripe</a><a href="#classes">● Overripe</a></div></div><div class="footer-bottom"><span>PickPerfect · PCTVS</span><span>Powered by Google Teachable Machine</span></div></footer>
+</body>
+</html>
